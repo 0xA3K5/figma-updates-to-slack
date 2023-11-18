@@ -9,7 +9,15 @@ bun install
 To run:
 
 ```bash
-bun run index.ts
+bun run build; bun run start
 ```
 
-This project was created using `bun init` in bun v1.0.7. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Environment Variables: 
+
+```
+FIGMA_TEAM_ID=
+FIGMA_ACCESS_TOKEN=
+FIGMA_FILE_KEY=
+SLACK_WEBHOOK_URL=
+PASSKEY=
+```

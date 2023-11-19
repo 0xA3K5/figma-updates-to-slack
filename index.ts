@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 import { ILibraryPublish } from "./types";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const PASSKEY = process.env.PASSKEY as string;
 const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL as string;
 

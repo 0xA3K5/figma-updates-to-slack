@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import * as express from "express";
+import express from "express";
 import { Request, Response } from "express";
 import { ILibraryPublish } from "./types";
 

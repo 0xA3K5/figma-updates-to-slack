@@ -2,7 +2,7 @@ import { Handler } from "@netlify/functions";
 import { ILibraryPublish } from "../../types";
 import { postToSlack } from "../..";
 
-const FigmaWebhookHandler: Handler = async (event, context) => {
+export const handler: Handler = async (event, context) => {
   try {
     const PASSKEY = process.env.PASSKEY as string;
 
@@ -37,5 +37,3 @@ const FigmaWebhookHandler: Handler = async (event, context) => {
     };
   }
 };
-
-export { FigmaWebhookHandler };

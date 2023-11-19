@@ -11,11 +11,13 @@ const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL as string;
 app.use(express.json());
 
 app.post("/figma-webhook", (req: Request, res: Response) => {
-    if (req.body.passcode === PASSKEY) {
-        if (req.body.event_type === "LIBRARY_PUBLISH") {
-            postToSlack(req.body as ILibraryPublish);
-        }
+    if (req.body.passcode !== PASSKEY) {
+        throw new Error("Passcode doesn't match")
     }
+    if (req.body.event_type === "LIBRARY_PUBLISH") {
+        postToSlack(req.body as ILibraryPublish);
+    }
+
     res.status(200).send("OK");
 });
 
@@ -25,10 +27,10 @@ app.listen(PORT, () => {
     );
 });
 
-const postToSlack = async (update: ILibraryPublish): Promise<void> => {
+export const postToSlack = async (update: ILibraryPublish): Promise<void> => {
     const message = `New Update on ${update.file_name} 🎉
     \n\`\`\`${update.description}\n\`\`\`
-    \n--${update.triggered_by.handle}
+    \n-${update.triggered_by.handle}
     \nhttps://www.figma.com/file/${update.file_key}/${update.file_name}
     `;
 

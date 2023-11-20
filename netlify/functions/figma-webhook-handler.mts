@@ -1,6 +1,5 @@
 import { Handler } from "@netlify/functions";
-import { ILibraryPublish } from "../../types";
-import { postToSlack } from "../..";
+import { getEventType, sendSlackMessage } from "../../src/utils";
 
 export const handler: Handler = async (event, context) => {
   try {
@@ -22,9 +21,10 @@ export const handler: Handler = async (event, context) => {
       };
     }
 
-    if (requestBody.event_type === "LIBRARY_PUBLISH") {
-      await postToSlack(requestBody as ILibraryPublish);
-    }
+    const eventType = getEventType(requestBody);
+
+    if (eventType) { sendSlackMessage(requestBody) };
+
     return {
       statusCode: 200,
       body: JSON.stringify({ message: "OK" }),

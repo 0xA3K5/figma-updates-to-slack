@@ -20,7 +20,7 @@ curl -X POST http://localhost:8888/.netlify/functions/figma-webhook-handler \
   "created_at": "2020-02-23T20:27:16Z",
   "description": "Wrote new documentation for webhooks v2",
   // CHANGE THE EVENT TYPE TO TEST DIFFERENT EVENTS
-  "event_type": "FILE_VERSION_UPDATE", 
+  "event_type": "LIBRARY_PUBLISH", 
   "file_key": "CL06nJNn5eZLQKDoARMND5",
   "file_name": "Developer page mockup demo",
   "label": "Added new documentation!",
@@ -35,9 +35,23 @@ curl -X POST http://localhost:8888/.netlify/functions/figma-webhook-handler \
 }'
 ```
 
+### Register Figma Webhooks
+
+
+```
+bun run figma-webhooks:register:library-publish
+```
+```
+bun run figma-webhooks:register:file-delete
+```
+
 Environment Variables:
 
 ```
 SLACK_WEBHOOK_URL=
-PASSKEY=
+FIGMA_TEAM_ID=
+FIGMA_ACCESS_TOKEN=
+ENDPOINT=DEPLOYED_URL
+SLACK_WEBHOOK_URL=
+PASSCODE=
 ```

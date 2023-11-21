@@ -3,7 +3,7 @@ import { getEventType, sendSlackMessage } from "../../src/utils";
 
 export const handler: Handler = async (event, context) => {
   try {
-    const PASSKEY = process.env.PASSKEY as string;
+    const PASSCODE = process.env.PASSCODE as string;
 
     if (event.httpMethod !== "POST" || !event.body) {
       return {
@@ -14,7 +14,7 @@ export const handler: Handler = async (event, context) => {
 
     const requestBody = JSON.parse(event.body);
 
-    if (requestBody.passcode !== PASSKEY) {
+    if (requestBody.passcode !== PASSCODE) {
       return {
         statusCode: 401,
         body: JSON.stringify({ message: "Unauthorized" }),

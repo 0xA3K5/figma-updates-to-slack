@@ -2,7 +2,8 @@
   "name": "figma-updates-to-slack",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js"
+    "figma-webhooks:register:library-publish": "ts-node ./src/scripts/register-figma-library-publish.ts",
+    "figma-webhooks:register:file-delete": "ts-node ./src/scripts/register-figma-file-delete.ts"
   },
   "devDependencies": {
     "bun-types": "latest",

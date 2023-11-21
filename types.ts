@@ -1,5 +1,4 @@
 export enum EEvents {
-    FILE_VERSION_UPDATE = 'FILE_VERSION_UPDATE',
     LIBRARY_PUBLISH = 'LIBRARY_PUBLISH',
     FILE_DELETE = 'FILE_DELETE'
 }
@@ -17,22 +16,6 @@ export interface IFileDete {
     webhook_id: number
 }
 
-export interface IFileVersion {
-    event_type: EEvents,
-    created_at: string,
-    description: string,
-    file_key: string,
-    file_name: string,
-    label: string,
-    passcode: string,
-    timestamp: string,
-    triggered_by: {
-        id: string,
-        handle: string,
-    },
-    version_id: string,
-    webhook_id: number,
-}
 export interface ILibraryPublish {
     event_type: EEvents,
     retries: number;
@@ -59,4 +42,4 @@ export interface ILibraryPublish {
     endpoint: string;
 }
 
-export type TEvent = ILibraryPublish | IFileVersion | IFileDete;
+export type TEvent = ILibraryPublish | IFileDete;

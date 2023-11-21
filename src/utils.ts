@@ -2,7 +2,6 @@ import 'dotenv/config';
 import {
   EEvents,
   IFileDete,
-  IFileVersion,
   ILibraryPublish,
   TEvent,
 } from "../types";
@@ -29,15 +28,6 @@ const getMessage = (event: TEvent): string => {
         \n\`\`\`${libraryUpdate.description}\n\`\`\`
         \n-${libraryUpdate.triggered_by.handle}
         \n${getFileUrl(libraryUpdate.file_key, libraryUpdate.file_name)}
-        `;
-    case EEvents.FILE_VERSION_UPDATE:
-      const versionUpdate = event as IFileVersion;
-      return `
-        New version on ${versionUpdate.file_name}
-        \n${versionUpdate.label}
-        \n\`\`\`${versionUpdate.description}\n\`\`\`
-        \n-${versionUpdate.triggered_by.handle}
-        \n${getFileUrl(versionUpdate.file_key, versionUpdate.file_name)}
         `;
     case EEvents.FILE_DELETE:
       const fileDelete = event as IFileDete;

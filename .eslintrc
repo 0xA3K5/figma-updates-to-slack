@@ -1,0 +1,50 @@
+{
+    "env": {
+      "es2021": true,
+      "node": true
+  },
+  "extends": ["airbnb-typescript/base", "airbnb"],
+  "plugins": ["import", "@typescript-eslint"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 2021,
+        "sourceType": "module",
+      "project": "./tsconfig.json"
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [".js", ".ts"]
+        }
+      }
+    },
+    "rules": {
+      "object-curly-spacing": ["warn", "always"],
+      "@typescript-eslint/semi": ["error", "always"],
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          "vars": "all",
+          "args": "none"
+        }
+      ],
+      "@typescript-eslint/no-explicit-any": [
+        "warn",
+        {
+          "ignoreRestArgs": true
+        }
+      ],
+      "@typescript-eslint/no-loop-func": "off",
+      "eol-last": "error",
+      "no-undef": "off",
+      "no-shadow": "off",
+      "import/extensions": [
+        "error",
+        "ignorePackages",
+        {
+          "js": "never",
+          "ts": "never"
+        }
+     ],
+    }
+  }

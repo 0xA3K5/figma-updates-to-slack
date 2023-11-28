@@ -1,14 +1,14 @@
-import { Handler } from "@netlify/functions";
-import { getEventType, sendSlackMessage } from "../../src/utils";
+import { Handler } from '@netlify/functions';
+import { getEventType, sendSlackMessage } from '../../src/utils';
 
 export const handler: Handler = async (event, context) => {
   try {
     const PASSCODE = process.env.PASSCODE as string;
 
-    if (event.httpMethod !== "POST" || !event.body) {
+    if (event.httpMethod !== 'POST' || !event.body) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ message: "Bad Request" }),
+        body: JSON.stringify({ message: 'Bad Request' }),
       };
     }
 
@@ -17,23 +17,28 @@ export const handler: Handler = async (event, context) => {
     if (requestBody.passcode !== PASSCODE) {
       return {
         statusCode: 401,
-        body: JSON.stringify({ message: "Unauthorized" }),
+        body: JSON.stringify({ message: 'Unauthorized' }),
       };
     }
 
     const eventType = getEventType(requestBody);
 
-    if (eventType) { sendSlackMessage(requestBody) };
+    if (eventType) {
+      console.log(eventType);
+      sendSlackMessage(requestBody);
+    }
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "OK" }),
+      body: JSON.stringify({ message: 'OK' }),
     };
   } catch (error) {
-    console.error("Error:", error);
+    console.error('Error:', error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: "Internal Server Error" }),
+      body: JSON.stringify({ message: 'Internal Server Error' }),
     };
   }
 };
+
+export default { handler };

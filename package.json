@@ -3,12 +3,19 @@
   "scripts": {
     "build": "tsc",
     "figma-webhooks:register:library-publish": "ts-node ./src/scripts/register-figma-library-publish.ts",
-    "figma-webhooks:register:file-delete": "ts-node ./src/scripts/register-figma-file-delete.ts"
+    "figma-webhooks:register:file-delete": "ts-node ./src/scripts/register-figma-file-delete.ts",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix"
   },
   "devDependencies": {
     "bun-types": "latest",
-    "typescript": "^4.9.5",
-    "netlify-cli": "^17.5.3"
+    "typescript": "*",
+    "netlify-cli": "^17.5.3",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-plugin-import": "^2.29.0"
   },
   "dependencies": {
     "@netlify/functions": "^1.6.0",

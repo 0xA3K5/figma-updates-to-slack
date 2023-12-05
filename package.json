@@ -8,14 +8,14 @@
     "lint:fix": "eslint . --ext .ts --fix"
   },
   "devDependencies": {
-    "bun-types": "latest",
-    "typescript": "*",
-    "netlify-cli": "^17.5.3",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
+    "bun-types": "latest",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.1.0",
-    "eslint-plugin-import": "^2.29.0"
+    "eslint-plugin-import": "^2.29.0",
+    "netlify-cli": "^17.5.3",
+    "typescript": "*"
   },
   "dependencies": {
     "@netlify/functions": "^1.6.0",

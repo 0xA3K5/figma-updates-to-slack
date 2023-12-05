@@ -1,7 +1,7 @@
 import { Handler } from '@netlify/functions';
 import { getEventType, sendSlackMessage } from '../../src/utils';
 
-export const handler: Handler = async (event, context) => {
+export const handler: Handler = async (event) => {
   try {
     const PASSCODE = process.env.PASSCODE as string;
 

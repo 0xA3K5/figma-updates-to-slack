@@ -17,7 +17,7 @@ export const getEventType = (requestBody: any): EEvents | null => {
 };
 
 const getMessage = (event: TEvent): string => {
-  const getFileUrl = (fileKey: string, fileName: string) => `https://www.figma.com/file/${fileKey}/${fileName}`;
+  const getFileUrl = (fileKey: string, fileName: string) => `https://www.figma.com/file/${fileKey}/${fileName.replace(/ /g, '-')}`;
 
   switch (event.event_type) {
     case EEvents.LIBRARY_PUBLISH:
@@ -39,10 +39,10 @@ const getMessage = (event: TEvent): string => {
   }
 };
 
-export const sendSlackMessage = async (event: TEvent): Promise<void> => {
-  const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL as string;
-  const message = getMessage(event);
+const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL as string;
 
+export const sendSlackMessage = async (event: TEvent): Promise<void> => {
+  const message = getMessage(event);
   const payload = { text: message };
 
   try {
